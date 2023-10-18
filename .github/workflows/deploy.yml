@@ -1,0 +1,39 @@
+name: Honar deploy CI/CD
+
+on:
+  push:
+    branches: 
+    - main
+    
+env:
+  ENVIRONMENT: ${{ github.head_ref || github.ref_name }}
+  PROJECT: acvod-web-${{ github.head_ref || github.ref_name }}
+
+jobs:
+   deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - run: ssh-keyscan "${{ secrets.SSH_ADDRESS }}" >> ~/.ssh/known_hosts
+    - run: chmod 644 ~/.ssh/known_hosts
+
+    - name: Connect by SSH and sync
+      run: |
+        ssh root@${{ secrets.SSH_ADDRESS }}
+        cd $PROJECT_DIR
+        git pull origin main
+      
+    - name: Update dependencies
+      run: npm install
+
+    - name: Build strapi project
+      run: npm run build
+
+    - name: Start strapi project
+      run:  pm2 start npm --name new-honar-strapi -- run start
