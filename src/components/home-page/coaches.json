@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_home_page_coaches",
+  "info": {
+    "displayName": "Coaches",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "data": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::coache.coache"
+    }
+  }
+}

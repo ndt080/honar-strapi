@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_contacts_contacts",
+  "info": {
+    "displayName": "contacts",
+    "icon": "pinMap",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "mapName": {
+      "type": "text",
+      "required": true
+    },
+    "mapUrl": {
+      "type": "text",
+      "required": true
+    },
+    "contacts": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbarBaloon"
+      },
+      "required": true,
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}
