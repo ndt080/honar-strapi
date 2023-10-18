@@ -4,22 +4,16 @@ on:
   push:
     branches: 
     - main
-    
-env:
-  ENVIRONMENT: ${{ github.head_ref || github.ref_name }}
-  PROJECT: acvod-web-${{ github.head_ref || github.ref_name }}
 
 jobs:
    deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-
     - name: Connect by SSH and sync repository
       uses: appleboy/ssh-action@v1.0.0
       with:
-        host: ${{ secrets.SSH_USER }}
-        username: ${{ secrets.USERNAME }}
+        host: ${{ secrets.SSH_ADDRESS }}
+        username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
         script: |
