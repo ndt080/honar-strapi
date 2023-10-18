@@ -18,6 +18,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           cd $PROJECT_DIR
+          ls -la
           git pull origin main
           npm install
           npm run build
