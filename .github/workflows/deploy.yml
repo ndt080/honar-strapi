@@ -19,7 +19,8 @@ jobs:
         script: |
           export NVM_DIR=~/.nvm
           source ~/.nvm/nvm.sh
-          npm --help
+          nvm use 18.18.1
+          nvm list
           cd ${{ vars.PROJECT_DIR }}
           ls -la
           git pull origin main
