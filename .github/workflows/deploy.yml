@@ -14,7 +14,7 @@ jobs:
       with:
         host: ${{ secrets.SSH_ADDRESS }}
         username: ${{ secrets.SSH_USER }}
-        passphrase: ${{ secrets.SSH_PASS }}
+        password: ${{ secrets.SSH_PASS }}
         port: ${{ secrets.SSH_PORT }}
         script: |
           cd $PROJECT_DIR
