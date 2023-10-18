@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Connect by SSH and sync repository
-      uses: appleboy/ssh-action@v1.0.0
+      uses: appleboy/ssh-action@v0.1.4
       with:
         host: ${{ secrets.SSH_ADDRESS }}
         username: ${{ secrets.SSH_USER }}
