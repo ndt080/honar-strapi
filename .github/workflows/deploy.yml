@@ -26,4 +26,4 @@ jobs:
           git pull origin main
           npm install
           npm run build
-          pm2 start npm --name new-honar-strapi -- run start
+          pm2 restart all
