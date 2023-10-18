@@ -17,7 +17,9 @@ jobs:
         password: ${{ secrets.SSH_PASS }}
         port: ${{ secrets.SSH_PORT }}
         script: |
-          echo ${{ vars.PROJECT_DIR }}
+          export NVM_DIR=~/.nvm
+          source ~/.nvm/nvm.sh
+          npm --help
           cd ${{ vars.PROJECT_DIR }}
           ls -la
           git pull origin main
